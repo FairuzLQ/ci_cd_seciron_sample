@@ -50,7 +50,7 @@ jobs:
       - name: Run SecIron Hardening
         run: |
           java -jar tools/secapi.jar \
-            -i "https://id.portal.seciron.comm" \
+            -i "https://id.portal.seciron.com" \
             -u "ci_cd_user" \
             --password "${{ secrets.IRONWALL_PASS }}" \
             -a "${{ secrets.IRONWALL_APIKEY }}" \
