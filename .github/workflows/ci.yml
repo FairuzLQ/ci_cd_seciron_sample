@@ -6,7 +6,7 @@ on:
       apk_gdrive_link:
         description: 'Share link APK di GDrive (public)'
         required: true
-        default: 'https://drive.google.com/file/d/1axmcOh-HT7oOy23086YOCDHDI8aY1FkI/view?usp=sharing'
+        default: 'https://drive.google.com/file/d/1V55oWc539n7QixpustbkD6sZJnmccp6U/view?usp=sharing'
 
 jobs:
   harden:
@@ -51,17 +51,17 @@ jobs:
         run: |
           java -jar tools/secapi.jar \
             -i "https://id.portal.seciron.com" \
-            -u "ci_cd_user" \
+            -u "ci_cd" \
             --password "${{ secrets.IRONWALL_PASS }}" \
             -a "${{ secrets.IRONWALL_APIKEY }}" \
             -c "${{ secrets.IRONWALL_SECRET }}" \
             -f 0 \
-            -t 881 \
+            -t 1543 \
             -p input/app.apk \
             -d hardened-output/ \
             --action ud \
-            --ks "2087109807990374402" \
-            --ms "1959821833008054273" \
+            --ks "2114360404791525378" \
+            --ms "2112487457256636417" \
             --lp
 
       - name: Upload artifact
