@@ -60,7 +60,7 @@ jobs:
             -p input/app.apk \
             -d hardened-output/ \
             --action ud \
-            --ks "2017052453618319362" \
+            --ks "2087109807990374402" \
             --ms "1959821833008054273" \
             --lp
 
