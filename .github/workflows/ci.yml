@@ -62,6 +62,7 @@ jobs:
             -d hardened-output/ \
             --action ud \
             --ks "2114360404791525378" \
+            --ms "2112487457256636417" \
             --lp 2>&1 | tee hardening.log
 
           # secapi.jar exits 0 even when the server fails, so detect errors in the log
