@@ -56,7 +56,7 @@ jobs:
             -a "${{ secrets.IRONWALL_APIKEY }}" \
             -c "${{ secrets.IRONWALL_SECRET }}" \
             -f 0 \
-            -t 981 \
+            -t 881 \
             -p input/app.apk \
             -d hardened-output/ \
             --action ud \
