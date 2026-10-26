@@ -49,6 +49,7 @@ jobs:
 
       - name: Run SecIron Hardening
         run: |
+          set -o pipefail
           java -jar tools/secapi.jar \
             -i "https://id.portal.seciron.com" \
             -u "ci_cd" \
@@ -62,7 +63,22 @@ jobs:
             --action ud \
             --ks "2114360404791525378" \
             --ms "2112487457256636417" \
-            --lp
+            --lp 2>&1 | tee hardening.log
+
+          # secapi.jar exits 0 even when the server fails, so detect errors in the log
+          if grep -qiE "Hardening failed|Status code:500|submit job failed|inject dex failed" hardening.log; then
+            echo "::error::SecIron hardening failed on the server. Check the IronWall dashboard task log for details."
+            exit 1
+          fi
+
+      - name: Verify hardened output
+        run: |
+          if [ -z "$(ls -A hardened-output/ 2>/dev/null)" ]; then
+            echo "::error::hardened-output/ is empty, no hardened APK was produced."
+            exit 1
+          fi
+          echo "Hardened output:"
+          ls -lh hardened-output/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -70,3 +86,4 @@ jobs:
           name: hardened-apk
           path: hardened-output/
           retention-days: 7
+          if-no-files-found: error
