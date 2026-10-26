@@ -57,7 +57,7 @@ jobs:
             -c "${{ secrets.IRONWALL_SECRET }}" \
             -f 0 \
             -t 1543 \
-            -p input/app.apk \
+            -p input/seciron_android.apk \
             -d hardened-output/ \
             --action ud \
             --ks "2114360404791525378" \
