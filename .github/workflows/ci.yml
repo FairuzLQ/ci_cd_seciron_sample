@@ -6,7 +6,7 @@ on:
       apk_gdrive_link:
         description: 'Share link APK di GDrive (public)'
         required: true
-        default: 'https://drive.google.com/file/d/1V55oWc539n7QixpustbkD6sZJnmccp6U/view?usp=sharing'
+        default: 'https://drive.google.com/file/d/1g3uxUUyb6rIGUZ5q7LirZwSAlsdz2-3i/view?usp=sharing'
 
 jobs:
   harden:
@@ -61,7 +61,8 @@ jobs:
             -p input/app.apk \
             -d hardened-output/ \
             --action ud \
-            --ks "2114360404791525378" \
+            --ks "2087109807990374402" \
+            --ms "1959821833008054273" \
             --lp 2>&1 | tee hardening.log
 
           # secapi.jar exits 0 even when the server fails, so detect errors in the log
